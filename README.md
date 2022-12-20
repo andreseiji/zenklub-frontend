@@ -36,6 +36,16 @@ ng build
 
 The build artifacts will be stored in the `dist/` directory.
 
+## Code lint
+
+```
+ng lint
+```
+
+```
+ng lint --fix
+```
+
 ## Running unit tests
 
 ```
