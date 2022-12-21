@@ -12,7 +12,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-**Important note:** The [msw](https://mswjs.io/) library is user to mock API calls. It is currently being always called in `src/main.ts` for the purpose of this example.
+**Important note:** The [msw](https://mswjs.io/) library is used to mock API calls. It is currently being always called in `src/main.ts` for the purpose of this example.
 
 ```
 ng serve
