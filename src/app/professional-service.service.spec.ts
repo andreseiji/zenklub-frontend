@@ -1,13 +1,16 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TestBed } from '@angular/core/testing';
 
-import { ProfessionalServiceService } from './professional-service.service';
+import { ProfessionalService } from './professional-service.service';
 
-describe('ProfessionalServiceService', () => {
-  let service: ProfessionalServiceService;
+describe('ProfessionalService', () => {
+  let service: ProfessionalService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(ProfessionalServiceService);
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
+    service = TestBed.inject(ProfessionalService);
   });
 
   it('should be created', () => {
