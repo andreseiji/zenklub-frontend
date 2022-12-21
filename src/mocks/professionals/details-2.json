@@ -1,0 +1,15 @@
+{
+  "id": 2,
+  "city": "Lisboa",
+  "description": "Lorem ipsum dolor sit amet, some rich text <h1>Hey, I am a Headline</h1> and I am not",
+  "name": "Sérgio Silva",
+  "price": {
+    "currency": "BRL",
+    "value": 250,
+    "durationInMinutes": 50
+  },
+  "profileImage": "https://via.placeholder.com/200",
+  "rating": 4,
+  "reviewsAmount": 12,
+  "specialization": "Psicanálise"
+}
