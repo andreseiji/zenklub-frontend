@@ -5,7 +5,7 @@ import { ProfessionalListComponent } from './features/professional-list/professi
 
 const routes: Routes = [
   { path: '', component: ProfessionalListComponent },
-  { path: 'professional', component: ProfessionalDetailsComponent },
+  { path: 'professional/:id', component: ProfessionalDetailsComponent },
 ];
 
 @NgModule({
