@@ -10,11 +10,13 @@
           {{ professional.city }}
         </span>
       </div>
-      <div>{{ professional.rating }}</div>
-      <div>{{ professional.reviewsAmount }}</div>
+      <div class="professional-rating">
+        <div>{{ professional.rating }} stars</div>
+        <div class="professional-reviews">({{ professional.reviewsAmount }} reviews)</div>
+      </div>
       <div>
-        <span>{{ professional.price.value | currency: professional.price.currency }}</span>
-        <span> / {{ professional.price.duration | secondsToMinutes }}</span>
+        <span class="professional-price">{{ professional.price.value | currency: professional.price.currency }}</span>
+        <span class="professional-session-duration">&nbsp;/ {{ professional.price.duration | secondsToMinutes }}</span>
       </div>
     </div>
   </div>

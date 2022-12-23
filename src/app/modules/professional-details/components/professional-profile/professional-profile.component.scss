@@ -27,23 +27,49 @@
 
 .profile-name {
   color: $gray500;
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: $spacing-sm;
 }
 
 .profile-specialization {
   color: $blue500;
+  font-size: 1.25rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .profile-city {
+  font-size: 1.25rem;
   span {
     color: lighten($gray500, 32%);
   }
 }
 
+.professional-rating {
+  display: flex;
+  align-items: center;
+  margin: $spacing-md 0;
+}
+
+.professional-reviews {
+  color: $gray500;
+  margin-left: $spacing-sm;
+}
+
+.professional-price {
+  color: $gray500;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
+.professional-session-duration {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
 .profile-description {
   font-size: 1.25rem;
+  line-height: 1.5;
 }
