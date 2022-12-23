@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ProfessionalDetailsComponent } from './features/professional-details/professional-details.component';
-import { ProfessionalListComponent } from './features/professional-list/professional-list.component';
+import { ProfessionalDetailsComponent } from './pages/professional-details/professional-details.component';
+import { ProfessionalListComponent } from './pages/professional-list/professional-list.component';
 
 const routes: Routes = [
   { path: '', component: ProfessionalListComponent },
