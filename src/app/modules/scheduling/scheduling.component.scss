@@ -3,9 +3,16 @@
 @import "src/styles/spacing";
 
 .container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
 }
 
 .header {
+  box-shadow: 0px 4px 12px 4px rgba(0, 0, 0, 0.16);
+}
+
+.header-title {
   background-color: $blue500;
   padding: $spacing-md;
 }
@@ -24,4 +31,64 @@
 
 .timezone {
   margin-top: $spacing-xs;
+}
+
+.date-range {
+  align-items: center;
+  display: flex;
+  padding: $spacing-sm;
+  gap: $spacing-md;
+}
+
+.date-action {
+  background-color: $gray500;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background-color: $gray700;
+  }
+
+  &:disabled {
+    background-color: $gray100;
+    cursor: not-allowed;
+  }
+}
+
+.date-day {
+  flex: 1;
+  text-align: center;
+}
+
+.date-slots {
+  align-items: center;
+  background-color: $white;
+  box-shadow: 0px 4px 12px 4px rgba(0, 0, 0, 0.16);
+  display: flex;
+  padding: $spacing-md 56px;
+  gap: $spacing-md;
+}
+
+.date-slots-list {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.slot {
+  background-color: $gray200;
+  color: $gray500;
+  font-weight: 700;
+  padding: $spacing-md;
+  width: 100%;
+
+  &:hover {
+    background-color: $gray300;
+  }
 }

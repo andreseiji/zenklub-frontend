@@ -13,6 +13,6 @@ export class SchedulingComponent {
   getTimezone(): string {
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const offset = getTimezoneOffset(timezone);
-    return `${timezone}${offset ? ` (${offset})` : null}`;
+    return `${timezone}${offset ? ` (${offset})` : ''}`;
   }
 }

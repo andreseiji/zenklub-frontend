@@ -1,6 +1,38 @@
 <div class="container">
   <div class="header">
-    <h3 class="title">Agende uma sessão</h3>
-    <p class="timezone">Fuso horário: {{getTimezone()}}</p>
+    <div class="header-title">
+      <h3 class="title">Agende uma sessão</h3>
+      <p class="timezone">Fuso horário: {{getTimezone()}}</p>
+    </div>
+    <div class="date-range">
+      <button class="date-action" aria-label="4 dias anteriores" disabled>
+        <img src="/assets/icons/arrow-left.svg" alt="" />
+      </button>
+      <div class="date-day">Day 0</div>
+      <div class="date-day">Day 1</div>
+      <div class="date-day">Day 2</div>
+      <div class="date-day">Day 3</div>
+      <button class="date-action" aria-label="Próximos 4 dias">
+        <img src="/assets/icons/arrow-right.svg" alt="" />
+      </button>
+    </div>
+  </div>
+  <div class="date-slots">
+    <div class="date-slots-list">
+      <button class="slot">08:00</button>
+      <button class="slot">08:30</button>
+    </div>
+    <div class="date-slots-list">
+      <button class="slot">08:00</button>
+      <button class="slot">08:30</button>
+    </div>
+    <div class="date-slots-list">
+      <button class="slot">08:00</button>
+      <button class="slot">08:30</button>
+    </div>
+    <div class="date-slots-list">
+      <button class="slot">08:00</button>
+      <button class="slot">08:30</button>
+    </div>
   </div>
 </div>
