@@ -16,7 +16,11 @@ export class ProfessionalService {
     return this.http.get(`${BASE_API_URL}/professionals/${id}`);
   }
 
-  getProfessionalSchedule(id: string) {
-    return this.http.get(`${BASE_API_URL}/professionals/${id}/schedule`);
+  getProfessionalSchedule(id: string, startDate?: string, endDate?: string) {
+    const filters =
+      startDate && endDate ? `?startDate=${startDate}&endDate=${endDate}` : '';
+    return this.http.get(
+      `${BASE_API_URL}/professionals/${id}/schedule${filters}`
+    );
   }
 }

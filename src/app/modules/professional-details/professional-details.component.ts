@@ -26,9 +26,6 @@ export class ProfessionalDetailsComponent implements OnInit {
       this.professionalService.getProfessional(id).subscribe((data) => {
         this.professional = data as Professional;
       });
-      this.professionalService.getProfessionalSchedule(id).subscribe((data) => {
-        this.professionalSchedule = data as Schedule;
-      });
     });
   }
 }
