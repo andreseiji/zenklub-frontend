@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProfessionalDetailsComponent } from './pages/professional-details/professional-details.component';
-import { ProfessionalListComponent } from './pages/professional-list/professional-list.component';
+import { ProfessionalDetailsModule } from './modules/professional-details/professional-details.module';
+import { ProfessionalListModule } from './modules/professional-list/professional-list.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProfessionalDetailsComponent,
-    ProfessionalListComponent,
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ProfessionalDetailsModule,
+    ProfessionalListModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })
