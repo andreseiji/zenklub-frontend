@@ -5,14 +5,14 @@
       <p class="timezone">Fuso horário: {{getTimezone()}}</p>
     </div>
     <div class="date-range">
-      <button class="date-action" aria-label="4 dias anteriores" disabled>
+      <button class="date-action" aria-label="4 dias anteriores" (click)="getPreviousDays()" [disabled]="dateOffset === 0">
         <img src="/assets/icons/arrow-left.svg" alt="" />
       </button>
       <div *ngFor="let day of currentDays" class="date-day">
         <p class="date-weekday">{{ day | date: 'EE' }}</p>
         <p class="date-month-and-day">{{ day | date: 'MMM dd' }}</p>
       </div>
-      <button class="date-action" aria-label="Próximos 4 dias">
+      <button class="date-action" aria-label="Próximos 4 dias" (click)="getNextDays()">
         <img src="/assets/icons/arrow-right.svg" alt="" />
       </button>
     </div>
