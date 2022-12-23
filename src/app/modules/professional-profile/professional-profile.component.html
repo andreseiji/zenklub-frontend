@@ -1,0 +1,24 @@
+<section *ngIf="professional" class="profile">
+  <div class="profile-info">
+    <img class="profile-image" [src]="professional.profileImage ?? '/assets/images/profile-placeholder.png'" alt="" />
+    <div>
+      <h2 class="profile-name">{{ professional.name }}</h2>
+      <div>
+        <span class="profile-specialization">{{ professional.specialization }}</span>
+        <span  *ngIf="professional.city" class="profile-city">
+          <span> | </span>
+          {{ professional.city }}
+        </span>
+      </div>
+      <div class="professional-rating">
+        <app-rating-stars [rating]="professional.rating"></app-rating-stars>
+        <div *ngIf="professional.reviewsAmount" class="professional-reviews">({{ professional.reviewsAmount }} avaliações)</div>
+      </div>
+      <div>
+        <span class="professional-price">{{ professional.price.value | currency: professional.price.currency }}</span>
+        <span class="professional-session-duration">&nbsp;/ {{ professional.price.duration | secondsToMinutes }}</span>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!compact" class="profile-description">{{ professional.description }}</div>
+</section>

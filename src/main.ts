@@ -4,7 +4,9 @@ import { AppModule } from './app/app.module';
 
 import { worker } from './mocks/browser';
 
-worker.start();
+worker.start({
+  onUnhandledRequest: 'bypass',
+});
 
 platformBrowserDynamic()
   .bootstrapModule(AppModule)

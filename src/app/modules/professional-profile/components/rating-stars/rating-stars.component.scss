@@ -1,0 +1,13 @@
+@import "src/styles/colors";
+
+.empty-state {
+  color: $gray500;
+}
+
+.star {
+  color: $gray300;
+}
+
+.star.filled {
+  color: $yellow500;
+}

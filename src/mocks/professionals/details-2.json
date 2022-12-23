@@ -1,14 +1,14 @@
 {
   "id": "2",
   "city": "Lisboa",
-  "description": "Lorem ipsum dolor sit amet, some rich text <h1>Hey, I am a Headline</h1> and I am not",
-  "name": "Sérgio Silva",
+  "description": "Sou membro ativo da Ordem dos Psicólogos Portugueses e sigo uma ética profissional rigorosa para garantir que todos os meus pacientes recebam o melhor cuidado possível. Além da minha formação em psicologia clínica, também tenho experiência em trabalhar em contextos de saúde pública e em colaboração com outros profissionais da saúde mental.",
+  "name": "João Santiago Nunez",
   "price": {
     "currency": "BRL",
     "value": 250,
-    "durationInMinutes": 50
+    "duration": 3300
   },
-  "profileImage": "https://via.placeholder.com/200",
+  "profileImage": "/assets/images/profile-image-2.png",
   "rating": 4,
   "reviewsAmount": 12,
   "specialization": "Psicanálise"

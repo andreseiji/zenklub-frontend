@@ -1,0 +1,53 @@
+@import "src/styles/breakpoint";
+@import "src/styles/colors";
+@import "src/styles/spacing";
+
+.screen {
+  background-color: $gray100;
+  min-height: 100vh;
+}
+
+.container {
+  padding: $spacing-lg;
+
+  @media (min-width: $breakpoint-mobile) {
+    padding: $spacing-xxl;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+.title {
+  color: $gray700;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: $spacing-lg;
+  text-align: center;
+
+  @media (min-width: $breakpoint-mobile) {
+    margin-bottom: $spacing-xxl;
+    font-size: 2rem;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: $spacing-lg;
+}
+
+.list-item {
+  background-color: $white;
+  display: flex;
+  padding: $spacing-lg;
+  border-radius: 8px;
+
+  &:hover {
+    background-color: $gray200;
+  }
+
+  @media (min-width: $breakpoint-mobile) {
+    padding: $spacing-md;
+  }
+}

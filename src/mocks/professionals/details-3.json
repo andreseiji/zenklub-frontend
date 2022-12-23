@@ -1,0 +1,15 @@
+{
+  "id": "3",
+  "city": "Campinas",
+  "description": null,
+  "name": "Eduardo Zenklub",
+  "price": {
+    "currency": "BRL",
+    "value": 120,
+    "duration": 1500
+  },
+  "profileImage": null,
+  "rating": null,
+  "reviewsAmount": null,
+  "specialization": "Terapia"
+}
