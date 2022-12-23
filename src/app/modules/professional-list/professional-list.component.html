@@ -1,10 +1,12 @@
-<div class="container">
-  <h1 class="title">Escolha um especialista</h1>
-  <ul class="list">
-    <li *ngFor="let professional of professionals">
-      <a [routerLink]="['/professional', professional?.id]" class="list-item">
-        <app-professional-profile [professional]="professional" [compact]="true"></app-professional-profile>
-      </a>
-    </li>
-  </ul>
-</div>
+<section class="screen">
+  <div class="container">
+    <h1 class="title">Escolha um especialista</h1>
+    <ul class="list">
+      <li *ngFor="let professional of professionals">
+        <a [routerLink]="['/professional', professional?.id]" class="list-item">
+          <app-professional-profile [professional]="professional" [compact]="true" style="width: 100%"></app-professional-profile>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
