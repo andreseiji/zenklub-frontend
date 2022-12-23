@@ -14,7 +14,7 @@
       <div>{{ professional.reviewsAmount }}</div>
       <div>
         <span>{{ professional.price.value | currency: professional.price.currency }}</span>
-        <span> / {{ professional.price.duration }} segundos</span>
+        <span> / {{ professional.price.duration | secondsToMinutes }}</span>
       </div>
     </div>
   </div>
