@@ -8,3 +8,14 @@ export function getTimezoneOffset(timezone: string): string | null {
       return null;
   }
 }
+
+export function getTimezoneLocation(timezone: string): string | null {
+  switch (timezone) {
+    case 'America/Sao_Paulo':
+      return 'São Paulo';
+    case 'Europe/Lisbon':
+      return 'Lisboa';
+    default:
+      return null;
+  }
+}

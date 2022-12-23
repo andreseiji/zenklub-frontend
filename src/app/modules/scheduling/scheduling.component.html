@@ -8,10 +8,10 @@
       <button class="date-action" aria-label="4 dias anteriores" disabled>
         <img src="/assets/icons/arrow-left.svg" alt="" />
       </button>
-      <div class="date-day">Day 0</div>
-      <div class="date-day">Day 1</div>
-      <div class="date-day">Day 2</div>
-      <div class="date-day">Day 3</div>
+      <div *ngFor="let day of currentDays" class="date-day">
+        <p class="date-weekday">{{ day | date: 'EE' }}</p>
+        <p class="date-month-and-day">{{ day | date: 'MMM dd' }}</p>
+      </div>
       <button class="date-action" aria-label="Próximos 4 dias">
         <img src="/assets/icons/arrow-right.svg" alt="" />
       </button>
