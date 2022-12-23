@@ -11,7 +11,7 @@ import * as schedule3 from './professionals/schedule-3.json';
 
 export const handlers = [
   rest.get(`${BASE_API_URL}/professionals`, (_req, res, ctx) => {
-    return res(ctx.status(200), ctx.json([details1, details2]));
+    return res(ctx.status(200), ctx.json([details1, details2, details3]));
   }),
 
   rest.get(`${BASE_API_URL}/professionals/:id`, (req, res, ctx) => {

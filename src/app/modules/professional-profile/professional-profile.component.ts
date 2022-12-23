@@ -8,4 +8,5 @@ import { Professional } from 'src/app/models/professional';
 })
 export class ProfessionalProfileComponent {
   @Input() professional: Professional = null;
+  @Input() compact = false;
 }

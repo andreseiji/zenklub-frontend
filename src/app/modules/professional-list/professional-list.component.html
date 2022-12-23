@@ -1,7 +1,10 @@
-<p>professional-list works!</p>
-
-<ul>
-  <li *ngFor="let professional of professionals">
-    <a [routerLink]="['/professional', professional?.id]">{{ professional?.name }}</a>
-  </li>
-</ul>
+<div class="container">
+  <h1 class="title">Escolha um especialista</h1>
+  <ul class="list">
+    <li *ngFor="let professional of professionals">
+      <a [routerLink]="['/professional', professional?.id]" class="list-item">
+        <app-professional-profile [professional]="professional" [compact]="true"></app-professional-profile>
+      </a>
+    </li>
+  </ul>
+</div>

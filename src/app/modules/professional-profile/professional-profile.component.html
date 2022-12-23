@@ -2,7 +2,7 @@
   <div class="profile-info">
     <img class="profile-image" [src]="professional.profileImage ?? '/assets/images/profile-placeholder.png'" alt="" />
     <div>
-      <h1 class="profile-name">{{ professional.name }}</h1>
+      <h2 class="profile-name">{{ professional.name }}</h2>
       <div>
         <span class="profile-specialization">{{ professional.specialization }}</span>
         <span  *ngIf="professional.city" class="profile-city">
@@ -20,7 +20,5 @@
       </div>
     </div>
   </div>
-  <div class="profile-description">{{ professional.description }}</div>
+  <div *ngIf="!compact" class="profile-description">{{ professional.description }}</div>
 </section>
-
-<span *ngIf="!professional">Carregando...</span>
