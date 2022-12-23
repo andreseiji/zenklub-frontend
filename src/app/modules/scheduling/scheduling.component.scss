@@ -1,0 +1,27 @@
+@import "src/styles/breakpoint";
+@import "src/styles/colors";
+@import "src/styles/spacing";
+
+.container {
+}
+
+.header {
+  background-color: $blue500;
+  padding: $spacing-md;
+}
+
+.title,
+.timezone {
+  color: $white;
+  text-align: center;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+}
+
+.timezone {
+  margin-top: $spacing-xs;
+}

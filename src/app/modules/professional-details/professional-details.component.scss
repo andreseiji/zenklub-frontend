@@ -17,13 +17,13 @@
 }
 
 .profile {
-  flex: 1;
+  flex: 2;
 
   @media (min-width: $breakpoint-tablet) {
-    flex: 2;
+    flex: 3;
   }
 }
 
 .schedule {
-  flex: 1;
+  flex: 2;
 }

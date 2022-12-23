@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { getTimezoneOffset } from 'src/app/utils/timezone';
 import { Schedule } from 'src/app/models/schedule';
 
 @Component({
@@ -8,4 +9,10 @@ import { Schedule } from 'src/app/models/schedule';
 })
 export class SchedulingComponent {
   @Input() schedule: Schedule = [];
+
+  getTimezone(): string {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const offset = getTimezoneOffset(timezone);
+    return `${timezone}${offset ? ` (${offset})` : null}`;
+  }
 }
