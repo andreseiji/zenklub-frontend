@@ -15,3 +15,15 @@
     margin: 0 auto;
   }
 }
+
+.profile {
+  flex: 1;
+
+  @media (min-width: $breakpoint-tablet) {
+    flex: 2;
+  }
+}
+
+.schedule {
+  flex: 1;
+}
