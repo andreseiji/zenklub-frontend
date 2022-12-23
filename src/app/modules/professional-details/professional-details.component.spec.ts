@@ -1,7 +1,7 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProfessionalCardComponent } from './components/professional-card/professional-card.component';
+import { ProfessionalProfileComponent } from './components/professional-profile/professional-profile.component';
 
 import { ProfessionalDetailsComponent } from './professional-details.component';
 
@@ -11,7 +11,10 @@ describe('ProfessionalDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ProfessionalDetailsComponent, ProfessionalCardComponent],
+      declarations: [
+        ProfessionalDetailsComponent,
+        ProfessionalProfileComponent,
+      ],
       imports: [HttpClientTestingModule, RouterTestingModule],
     }).compileComponents();
 
