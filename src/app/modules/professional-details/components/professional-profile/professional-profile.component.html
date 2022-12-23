@@ -1,3 +1,18 @@
-<p>professional-card works!</p>
+<section *ngIf="professional" class="profile">
+  <div class="profile-info">
+    <img class="profile-image" [src]="professional.profileImage" alt="" />
+    <div>
+      <h1>{{ professional.name }}</h1>
+      <div>{{ professional.specialization }}</div>
+      <div>{{ professional.city }}</div>
+      <div>{{ professional.rating }}</div>
+      <div>{{ professional.reviewsAmount }}</div>
+      <div>{{ professional.price.currency }}</div>
+      <div>{{ professional.price.value }}</div>
+      <div>{{ professional.price.durationInMinutes }}</div>
+    </div>
+  </div>
+  <div class="profile-description">{{ professional.description }}</div>
+</section>
 
-<h1>{{ professional?.name }}</h1>
+<span *ngIf="!professional">Carregando...</span>
