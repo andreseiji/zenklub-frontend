@@ -1,0 +1,112 @@
+@import "src/styles/breakpoint";
+@import "src/styles/colors";
+@import "src/styles/spacing";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.header {
+  border-radius: 4px;
+  box-shadow: 0px 4px 12px 4px rgba(0, 0, 0, 0.16);
+}
+
+.header-title {
+  background-color: $blue500;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: $spacing-md;
+}
+
+.title,
+.timezone {
+  color: $white;
+  text-align: center;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.5px;
+}
+
+.timezone {
+  margin-top: $spacing-xs;
+}
+
+.date-range {
+  align-items: center;
+  display: flex;
+  padding: $spacing-sm;
+  gap: $spacing-md;
+}
+
+.date-action {
+  background-color: $gray500;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+
+  &:hover {
+    background-color: $gray700;
+  }
+
+  &:disabled {
+    background-color: $gray100;
+    cursor: not-allowed;
+  }
+}
+
+.date-day {
+  flex: 1;
+  text-align: center;
+}
+
+.date-weekday {
+  color: $gray500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.date-month-and-day {
+  color: $gray500;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.date-slots {
+  background-color: $white;
+  border-radius: 4px;
+  box-shadow: 0px 4px 12px 4px rgba(0, 0, 0, 0.16);
+  display: flex;
+  padding: $spacing-md 56px;
+  gap: $spacing-md;
+  max-height: 464px;
+  overflow-y: auto;
+}
+
+.date-slots-list {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.slot {
+  background-color: $gray200;
+  border-radius: 4px;
+  color: $gray500;
+  font-weight: 700;
+  padding: $spacing-md;
+  width: 100%;
+
+  &:hover {
+    background-color: $gray300;
+  }
+}

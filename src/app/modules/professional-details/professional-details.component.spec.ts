@@ -1,7 +1,8 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { ProfessionalProfileComponent } from '../professional-profile/professional-profile.component';
+import { ProfessionalProfileModule } from '../professional-profile/professional-profile.module';
+import { SchedulingModule } from '../scheduling/scheduling.module';
 
 import { ProfessionalDetailsComponent } from './professional-details.component';
 
@@ -11,11 +12,13 @@ describe('ProfessionalDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        ProfessionalDetailsComponent,
-        ProfessionalProfileComponent,
+      declarations: [ProfessionalDetailsComponent],
+      imports: [
+        HttpClientTestingModule,
+        RouterTestingModule,
+        ProfessionalProfileModule,
+        SchedulingModule,
       ],
-      imports: [HttpClientTestingModule, RouterTestingModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ProfessionalDetailsComponent);
