@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { format, getDay } from 'date-fns';
 import { Professional } from 'src/app/models/professional';
-import { Schedule } from 'src/app/models/schedule';
+import { Schedule, ScheduleSlot } from 'src/app/models/schedule';
 import { ProfessionalService } from '../../services/professional-service.service';
 
 @Component({
@@ -27,5 +28,17 @@ export class ProfessionalDetailsComponent implements OnInit {
         this.professional = data as Professional;
       });
     });
+  }
+
+  schedule(slot: ScheduleSlot) {
+    const startDate = new Date(slot.startTime);
+    const endDate = new Date(slot.endTime);
+    const day = format(startDate, 'dd/MM');
+    const start = format(startDate, 'HH:mm');
+    const end = format(endDate, 'HH:mm');
+    // Ideally, a styled modal, but for the purpose of this challenge, a plain JS confirm should be okay
+    confirm(
+      `Agendar horário dia ${day}, das ${start} às ${end}, com ${this.professional?.name}?`
+    );
   }
 }

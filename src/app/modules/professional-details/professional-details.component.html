@@ -1,4 +1,4 @@
 <div class="container">
   <app-professional-profile class="profile" [professional]="professional"></app-professional-profile>
-  <app-scheduling *ngIf="professional" class="schedule" [id]="professional.id"></app-scheduling>
+  <app-scheduling *ngIf="professional" class="schedule" [id]="professional.id" (scheduleEvent)="schedule($event)"></app-scheduling>
 </div>

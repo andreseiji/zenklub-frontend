@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { getTimezoneLocation, getTimezoneOffset } from 'src/app/utils/timezone';
-import { Schedule } from 'src/app/models/schedule';
+import { Schedule, ScheduleSlot } from 'src/app/models/schedule';
 import addDays from 'date-fns/addDays';
 import { ProfessionalService } from 'src/app/services/professional-service.service';
 import { isSameDay } from 'date-fns';
 
 type SlotDay = {
   day: Date;
-  slots: string[];
+  slots: Schedule;
 };
 
 @Component({
@@ -17,6 +17,9 @@ type SlotDay = {
 })
 export class SchedulingComponent implements OnInit {
   @Input() id: string | undefined;
+
+  @Output() scheduleEvent = new EventEmitter<ScheduleSlot>();
+
   public dateOffset = 0;
   public currentDays: Date[] = [];
   public currentSlots: SlotDay[] = [];
@@ -50,9 +53,9 @@ export class SchedulingComponent implements OnInit {
         this.currentDays.forEach((day) => {
           updatedSlots.push({
             day,
-            slots: (data as Schedule)
-              .filter((slot) => isSameDay(day, new Date(slot.startTime)))
-              .map((date) => date.startTime),
+            slots: (data as Schedule).filter((slot) =>
+              isSameDay(day, new Date(slot.startTime))
+            ),
           });
         });
         this.currentSlots = [...updatedSlots];
@@ -89,5 +92,9 @@ export class SchedulingComponent implements OnInit {
     if (this.id) {
       this.fetchCurrentSlots(this.id, this.dateOffset);
     }
+  }
+
+  handleScheduleClick(value: ScheduleSlot) {
+    this.scheduleEvent.emit(value);
   }
 }

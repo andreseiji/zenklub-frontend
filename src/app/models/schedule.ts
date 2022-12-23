@@ -1,4 +1,4 @@
-type ScheduleSlot = {
+export type ScheduleSlot = {
   startTime: string;
   endTime: string;
 };
