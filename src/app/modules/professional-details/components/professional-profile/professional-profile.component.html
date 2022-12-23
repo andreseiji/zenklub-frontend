@@ -1,6 +1,6 @@
 <section *ngIf="professional" class="profile">
   <div class="profile-info">
-    <img class="profile-image" [src]="professional.profileImage" alt="" />
+    <img class="profile-image" [src]="professional.profileImage ?? '/assets/images/profile-placeholder.png'" alt="" />
     <div>
       <h1 class="profile-name">{{ professional.name }}</h1>
       <div>
@@ -11,8 +11,8 @@
         </span>
       </div>
       <div class="professional-rating">
-        <div>{{ professional.rating }} stars</div>
-        <div class="professional-reviews">({{ professional.reviewsAmount }} reviews)</div>
+        <app-rating-stars [rating]="professional.rating"></app-rating-stars>
+        <div *ngIf="professional.reviewsAmount" class="professional-reviews">({{ professional.reviewsAmount }} avaliações)</div>
       </div>
       <div>
         <span class="professional-price">{{ professional.price.value | currency: professional.price.currency }}</span>
