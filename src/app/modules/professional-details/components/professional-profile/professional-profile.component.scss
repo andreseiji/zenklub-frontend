@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-lg;
+  align-items: center;
 
   @media (min-width: $breakpoint-mobile) {
     flex-direction: row;
@@ -27,9 +28,13 @@
 
 .profile-name {
   color: $gray500;
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 700;
   margin-bottom: $spacing-sm;
+
+  @media (min-width: $breakpoint-mobile) {
+    font-size: 2rem;
+  }
 }
 
 .profile-specialization {
@@ -65,8 +70,9 @@
 }
 
 .professional-session-duration {
+  color: $gray500;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .profile-description {
