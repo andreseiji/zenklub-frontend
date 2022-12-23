@@ -17,6 +17,7 @@ type SlotDay = {
 })
 export class SchedulingComponent implements OnInit {
   @Input() id: string | undefined;
+  @Input() mobile = false;
 
   @Output() scheduleEvent = new EventEmitter<ScheduleSlot>();
 
@@ -30,18 +31,22 @@ export class SchedulingComponent implements OnInit {
 
   calculateCurrentDays(offset: number): void {
     const now = new Date();
-    this.currentDays = [
-      addDays(now, 4 * offset),
-      addDays(now, 4 * offset + 1),
-      addDays(now, 4 * offset + 2),
-      addDays(now, 4 * offset + 3),
-    ];
+    if (this.mobile) {
+      this.currentDays = [addDays(now, offset)];
+    } else {
+      this.currentDays = [
+        addDays(now, 4 * offset),
+        addDays(now, 4 * offset + 1),
+        addDays(now, 4 * offset + 2),
+        addDays(now, 4 * offset + 3),
+      ];
+    }
   }
 
   fetchCurrentSlots(id: string, offset: number): void {
     const now = new Date();
-    const startDate = addDays(now, 4 * offset);
-    const endDate = addDays(startDate, 4);
+    const startDate = addDays(now, (this.mobile ? 1 : 4) * offset);
+    const endDate = addDays(startDate, this.mobile ? 1 : 4);
     this.professionalService
       .getProfessionalSchedule(
         id,
