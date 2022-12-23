@@ -6,7 +6,7 @@
   "price": {
     "currency": "BRL",
     "value": 250,
-    "durationInMinutes": 50
+    "duration": 3000
   },
   "profileImage": "/assets/images/profile-image-2.png",
   "rating": 4,

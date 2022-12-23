@@ -11,5 +11,7 @@
     padding: $spacing-xxl;
     gap: $spacing-xl;
     flex-direction: row;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 }

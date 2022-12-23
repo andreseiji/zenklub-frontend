@@ -2,11 +2,11 @@
   "id": "1",
   "city": "Lisboa",
   "description": "Lorem ipsum dolor sit amet, some rich text <h1>Hey, I am a Headline</h1> and I am not",
-  "name": "Gabriela Santos",
+  "name": "Gabriela Santos Neves",
   "price": {
     "currency": "BRL",
     "value": 160,
-    "durationInMinutes": 50
+    "duration": 3000
   },
   "profileImage": "/assets/images/profile-image-1.png",
   "rating": 5,

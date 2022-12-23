@@ -1,7 +1,7 @@
 type ProfessionalPrice = {
   currency: 'BRL' | 'USD';
   value: number;
-  durationInMinutes: number;
+  duration: number;
 };
 
 export type Professional = {

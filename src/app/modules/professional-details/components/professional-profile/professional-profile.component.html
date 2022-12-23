@@ -2,14 +2,20 @@
   <div class="profile-info">
     <img class="profile-image" [src]="professional.profileImage" alt="" />
     <div>
-      <h1>{{ professional.name }}</h1>
-      <div>{{ professional.specialization }}</div>
-      <div>{{ professional.city }}</div>
+      <h1 class="profile-name">{{ professional.name }}</h1>
+      <div>
+        <span class="profile-specialization">{{ professional.specialization }}</span>
+        <span  *ngIf="professional.city" class="profile-city">
+          <span> | </span>
+          {{ professional.city }}
+        </span>
+      </div>
       <div>{{ professional.rating }}</div>
       <div>{{ professional.reviewsAmount }}</div>
-      <div>{{ professional.price.currency }}</div>
-      <div>{{ professional.price.value }}</div>
-      <div>{{ professional.price.durationInMinutes }}</div>
+      <div>
+        <span>{{ professional.price.value | currency: professional.price.currency }}</span>
+        <span> / {{ professional.price.duration }} segundos</span>
+      </div>
     </div>
   </div>
   <div class="profile-description">{{ professional.description }}</div>
