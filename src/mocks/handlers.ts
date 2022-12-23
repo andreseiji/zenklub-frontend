@@ -43,6 +43,8 @@ export const handlers = [
 
       const timeSlots = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
 
+      /* This should simulate some available slots, but will change every time the API is called
+        In production, it should be implemented by consuming a real API connected to a database */
       Array.from(Array(daysDiff).keys()).forEach((day) => {
         const dateTime = addDays(startDateTime, day);
         timeSlots.forEach((hours) => {

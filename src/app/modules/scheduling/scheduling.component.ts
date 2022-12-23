@@ -3,6 +3,12 @@ import { getTimezoneLocation, getTimezoneOffset } from 'src/app/utils/timezone';
 import { Schedule } from 'src/app/models/schedule';
 import addDays from 'date-fns/addDays';
 import { ProfessionalService } from 'src/app/services/professional-service.service';
+import { isSameDay } from 'date-fns';
+
+type SlotDay = {
+  day: Date;
+  slots: string[];
+};
 
 @Component({
   selector: 'app-scheduling',
@@ -11,9 +17,9 @@ import { ProfessionalService } from 'src/app/services/professional-service.servi
 })
 export class SchedulingComponent implements OnInit {
   @Input() id: string | undefined;
-  public schedule: Schedule = [];
   public dateOffset = 0;
   public currentDays: Date[] = [];
+  public currentSlots: SlotDay[] = [];
 
   constructor(private professionalService: ProfessionalService) {
     professionalService;
@@ -40,8 +46,16 @@ export class SchedulingComponent implements OnInit {
         endDate.toISOString()
       )
       .subscribe((data) => {
-        this.schedule = data as Schedule;
-        console.log('this.schedule', this.schedule);
+        const updatedSlots: SlotDay[] = [];
+        this.currentDays.forEach((day) => {
+          updatedSlots.push({
+            day,
+            slots: (data as Schedule)
+              .filter((slot) => isSameDay(day, new Date(slot.startTime)))
+              .map((date) => date.startTime),
+          });
+        });
+        this.currentSlots = [...updatedSlots];
       });
   }
 

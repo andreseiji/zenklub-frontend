@@ -18,21 +18,8 @@
     </div>
   </div>
   <div class="date-slots">
-    <div class="date-slots-list">
-      <button class="slot">08:00</button>
-      <button class="slot">08:30</button>
-    </div>
-    <div class="date-slots-list">
-      <button class="slot">08:00</button>
-      <button class="slot">08:30</button>
-    </div>
-    <div class="date-slots-list">
-      <button class="slot">08:00</button>
-      <button class="slot">08:30</button>
-    </div>
-    <div class="date-slots-list">
-      <button class="slot">08:00</button>
-      <button class="slot">08:30</button>
+    <div *ngFor="let date of currentSlots" class="date-slots-list">
+      <button *ngFor="let slot of date.slots" class="slot">{{ slot | date: 'HH:mm' }}</button>
     </div>
   </div>
 </div>
