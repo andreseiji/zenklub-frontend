@@ -32,13 +32,11 @@ export class ProfessionalDetailsComponent implements OnInit {
 
   schedule(slot: ScheduleSlot) {
     const startDate = new Date(slot.startTime);
-    const endDate = new Date(slot.endTime);
     const day = format(startDate, 'dd/MM');
     const start = format(startDate, 'HH:mm');
-    const end = format(endDate, 'HH:mm');
     // Ideally, a styled modal, but for the purpose of this challenge, a plain JS confirm should be okay
     confirm(
-      `Agendar horário dia ${day}, das ${start} às ${end}, com ${this.professional?.name}?`
+      `Agendar horário com ${this.professional?.name}, dia ${day} às ${start}?`
     );
   }
 }
