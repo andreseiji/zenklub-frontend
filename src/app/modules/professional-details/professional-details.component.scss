@@ -1,0 +1,15 @@
+@import "src/styles/breakpoint";
+@import "src/styles/spacing";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+  padding: $spacing-lg;
+
+  @media (min-width: $breakpoint-mobile) {
+    padding: $spacing-xxl;
+    gap: $spacing-xl;
+    flex-direction: row;
+  }
+}
