@@ -6,6 +6,11 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-sm;
+  width: 100%;
+
+  @media (min-width: $breakpoint-tablet) {
+    width: clamp(480px, 30vw, 540px);
+  }
 }
 
 .header {
