@@ -7,7 +7,7 @@
   gap: $spacing-lg;
   padding: $spacing-lg;
 
-  @media (min-width: $breakpoint-mobile) {
+  @media (min-width: $breakpoint-tablet) {
     padding: $spacing-xxl;
     gap: $spacing-xl;
     flex-direction: row;
