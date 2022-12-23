@@ -6,6 +6,11 @@
   display: flex;
   flex-direction: column;
   gap: $spacing-sm;
+  width: 100%;
+
+  @media (min-width: $breakpoint-tablet) {
+    width: clamp(480px, 30vw, 540px);
+  }
 }
 
 .header {
@@ -91,11 +96,12 @@
 }
 
 .date-slots-list {
-  flex: 1;
-  text-align: center;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: $spacing-sm;
+  height: 100%;
+  text-align: center;
 }
 
 .slot {

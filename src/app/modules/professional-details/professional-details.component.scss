@@ -27,3 +27,17 @@
 .schedule {
   flex: 2;
 }
+
+.hidden-mobile {
+  display: none;
+  @media (min-width: $breakpoint-mobile) {
+    display: block;
+  }
+}
+
+.hidden-desktop {
+  display: block;
+  @media (min-width: $breakpoint-mobile) {
+    display: none;
+  }
+}
