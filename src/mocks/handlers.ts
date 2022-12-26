@@ -75,6 +75,6 @@ export const handlers = [
       return res(ctx.status(200), ctx.delay(200), ctx.json(slots));
     }
 
-    return res(ctx.status(404));
+    return res(ctx.status(200), ctx.delay(200), ctx.json([]));
   }),
 ];

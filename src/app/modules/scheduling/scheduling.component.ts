@@ -27,13 +27,13 @@ export class SchedulingComponent implements OnChanges, OnDestroy {
   @Input() professionalId!: string;
   @Input() limit = 1;
 
-  @Output() private scheduleEvent = new EventEmitter<ScheduleSlot>();
+  @Output() scheduleEvent = new EventEmitter<ScheduleSlot>();
 
   protected scheduleSubscription!: Subscription;
   protected isLoading = false;
-  protected start = 0;
-  protected currentDays: Date[] = [];
-  protected currentSlots: SlotDay[] = [];
+  start = 0;
+  currentDays: Date[] = [];
+  currentSlots: SlotDay[] = [];
 
   constructor(private professionalService: ProfessionalService) {}
 
@@ -80,8 +80,8 @@ export class SchedulingComponent implements OnChanges, OnDestroy {
       });
   }
 
-  getCurrentDays(start: number, limit: number): Date[] {
-    const firstDay = addDays(new Date(), start);
+  getCurrentDays(start: number, limit: number, now = new Date()): Date[] {
+    const firstDay = addDays(now, start);
     const currentDays = [];
     let iterator = 0;
 

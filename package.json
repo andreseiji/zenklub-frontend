@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "prepare": "husky install",
-    "test:ci": "ng test --browsers=ChromeHeadless --watch=false"
+    "test:ci": "ng test --browsers=ChromeHeadless --watch=false",
+    "test:coverage": "ng test --browsers=ChromeHeadless --watch=false --code-coverage"
   },
   "private": true,
   "dependencies": {

@@ -17,7 +17,7 @@ export class ProfessionalDetailsComponent implements OnInit, OnDestroy {
   protected isLoading = false;
   protected professional: Professional = null;
   protected professionalSchedule: Schedule = [];
-  protected limit = 1;
+  public limit = 1;
 
   constructor(
     private route: ActivatedRoute,
