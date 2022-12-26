@@ -1,6 +1,6 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { addDays } from 'date-fns';
+import { addDays, addHours } from 'date-fns';
 
 import { SchedulingComponent } from './scheduling.component';
 
@@ -69,6 +69,28 @@ describe('SchedulingComponent', () => {
         startTime: 'a',
         endTime: 'b',
       });
+    });
+  });
+
+  describe('updateCurrentSlots', () => {
+    it('should update slots accordingly', () => {
+      const date = new Date('2022-12-31');
+      const dateSlot = {
+        startTime: addHours(date, 1).toISOString(),
+        endTime: addHours(date, 2).toISOString(),
+      };
+      component.currentDays = component.getCurrentDays(0, 2, date);
+      component.updateCurrentSlots([dateSlot]);
+      expect(component.currentSlots).toEqual([
+        {
+          day: date,
+          slots: [dateSlot],
+        },
+        {
+          day: addDays(date, 1),
+          slots: [],
+        },
+      ]);
     });
   });
 });
