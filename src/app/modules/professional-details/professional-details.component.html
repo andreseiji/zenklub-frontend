@@ -4,14 +4,8 @@
     [professional]="professional"
   ></app-professional-profile>
   <app-scheduling
-    class="schedule hidden-mobile"
-    [limit]="4"
-    [professionalId]="professional.id"
-    (scheduleEvent)="schedule($event)"
-  ></app-scheduling>
-  <app-scheduling
-    class="schedule hidden-desktop" 
-    [limit]="1"
+    class="schedule"
+    [limit]="limit"
     [professionalId]="professional.id"
     (scheduleEvent)="schedule($event)"
   ></app-scheduling>

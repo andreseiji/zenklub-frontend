@@ -1,9 +1,15 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { getTimezoneLocation, getTimezoneOffset } from 'src/app/utils/timezone';
-import { Schedule, ScheduleSlot } from 'src/app/models/schedule';
-import addDays from 'date-fns/addDays';
-import { ProfessionalService } from 'src/app/services/professional-service.service';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+} from '@angular/core';
 import { isSameDay } from 'date-fns';
+import addDays from 'date-fns/addDays';
+import { Schedule, ScheduleSlot } from 'src/app/models/schedule';
+import { ProfessionalService } from 'src/app/services/professional-service.service';
+import { getTimezoneLocation, getTimezoneOffset } from 'src/app/utils/timezone';
 
 type SlotDay = {
   day: Date;
@@ -15,7 +21,7 @@ type SlotDay = {
   templateUrl: './scheduling.component.html',
   styleUrls: ['./scheduling.component.scss'],
 })
-export class SchedulingComponent implements OnInit {
+export class SchedulingComponent implements OnChanges {
   @Input() professionalId!: string;
   @Input() limit = 1;
 
@@ -25,8 +31,11 @@ export class SchedulingComponent implements OnInit {
   public currentDays: Date[] = [];
   public currentSlots: SlotDay[] = [];
 
-  constructor(private professionalService: ProfessionalService) {
-    professionalService;
+  constructor(private professionalService: ProfessionalService) {}
+
+  ngOnChanges() {
+    this.currentDays = this.getCurrentDays(this.start, this.limit);
+    this.fetchCurrentSlots(this.professionalId, this.start, this.limit);
   }
 
   updateCurrentSlots(slots: Schedule): void {
@@ -57,11 +66,6 @@ export class SchedulingComponent implements OnInit {
       .subscribe((data) => {
         this.updateCurrentSlots(data);
       });
-  }
-
-  ngOnInit() {
-    this.currentDays = this.getCurrentDays(this.start, this.limit);
-    this.fetchCurrentSlots(this.professionalId, this.start, this.limit);
   }
 
   getCurrentDays(start: number, limit: number): Date[] {
