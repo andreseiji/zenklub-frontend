@@ -46,4 +46,16 @@ describe('ProfessionalDetailsComponent', () => {
       expect(component.limit).toBe(4);
     });
   });
+
+  describe('When schedule is called', () => {
+    it('should open a vanilla JS confirm', () => {
+      spyOn(window, 'confirm').and.returnValue(true);
+      const startDate = new Date();
+      component.schedule({
+        startTime: startDate.toISOString(),
+        endTime: startDate.toISOString(),
+      });
+      expect(window.confirm).toHaveBeenCalledTimes(1);
+    });
+  });
 });

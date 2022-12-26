@@ -56,6 +56,18 @@ ng test
 
 Execute the unit tests via [Karma](https://karma-runner.github.io).
 
+Run once, for CI:
+
+```
+npm run test:ci
+```
+
+Run with coverage:
+
+```
+npm run test:coverage
+```
+
 ## Running end-to-end tests
 
 ```
