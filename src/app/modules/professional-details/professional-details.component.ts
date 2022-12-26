@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { format, getDay } from 'date-fns';
+import { format } from 'date-fns';
 import { Professional } from 'src/app/models/professional';
 import { Schedule, ScheduleSlot } from 'src/app/models/schedule';
 import { ProfessionalService } from '../../services/professional-service.service';

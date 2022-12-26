@@ -17,11 +17,11 @@ type SlotDay = {
 })
 export class SchedulingComponent implements OnInit {
   @Input() id: string | undefined;
-  @Input() mobile = false;
+  @Input() limit = 1;
 
   @Output() scheduleEvent = new EventEmitter<ScheduleSlot>();
 
-  public dateOffset = 0;
+  public start = 0;
   public currentDays: Date[] = [];
   public currentSlots: SlotDay[] = [];
 
@@ -29,24 +29,23 @@ export class SchedulingComponent implements OnInit {
     professionalService;
   }
 
-  calculateCurrentDays(offset: number): void {
-    const now = new Date();
-    if (this.mobile) {
-      this.currentDays = [addDays(now, offset)];
-    } else {
-      this.currentDays = [
-        addDays(now, 4 * offset),
-        addDays(now, 4 * offset + 1),
-        addDays(now, 4 * offset + 2),
-        addDays(now, 4 * offset + 3),
-      ];
+  getCurrentDays(start: number, limit: number): Date[] {
+    const firstDay = addDays(new Date(), start);
+    const currentDays = [];
+    let iterator = 0;
+
+    while (iterator < limit) {
+      const currentDay = addDays(firstDay, iterator);
+      currentDays.push(currentDay);
+      iterator++;
     }
+
+    return currentDays;
   }
 
-  fetchCurrentSlots(id: string, offset: number): void {
-    const now = new Date();
-    const startDate = addDays(now, (this.mobile ? 1 : 4) * offset);
-    const endDate = addDays(startDate, this.mobile ? 1 : 4);
+  fetchCurrentSlots(id: string, start: number, limit: number): void {
+    const startDate = addDays(new Date(), start);
+    const endDate = addDays(new Date(), start + limit);
     this.professionalService
       .getProfessionalSchedule(
         id,
@@ -68,9 +67,27 @@ export class SchedulingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.calculateCurrentDays(this.dateOffset);
+    this.currentDays = this.getCurrentDays(this.start, this.limit);
     if (this.id) {
-      this.fetchCurrentSlots(this.id, this.dateOffset);
+      this.fetchCurrentSlots(this.id, this.start, this.limit);
+    }
+  }
+
+  getNextDays(): void {
+    this.start = this.start + this.limit;
+    this.currentDays = this.getCurrentDays(this.start, this.limit);
+    if (this.id) {
+      this.fetchCurrentSlots(this.id, this.start, this.limit);
+    }
+  }
+
+  getPreviousDays(): void {
+    if (this.start - this.limit >= 0) {
+      this.start = this.start - this.limit;
+    }
+    this.currentDays = this.getCurrentDays(this.start, this.limit);
+    if (this.id) {
+      this.fetchCurrentSlots(this.id, this.start, this.limit);
     }
   }
 
@@ -79,24 +96,6 @@ export class SchedulingComponent implements OnInit {
     const location = getTimezoneLocation(timezone);
     const offset = getTimezoneOffset(timezone);
     return `${location}${offset ? ` (${offset})` : ''}`;
-  }
-
-  getNextDays(): void {
-    this.dateOffset = this.dateOffset + 1;
-    this.calculateCurrentDays(this.dateOffset);
-    if (this.id) {
-      this.fetchCurrentSlots(this.id, this.dateOffset);
-    }
-  }
-
-  getPreviousDays(): void {
-    if (this.dateOffset > 0) {
-      this.dateOffset = this.dateOffset - 1;
-    }
-    this.calculateCurrentDays(this.dateOffset);
-    if (this.id) {
-      this.fetchCurrentSlots(this.id, this.dateOffset);
-    }
   }
 
   handleScheduleClick(value: ScheduleSlot) {
