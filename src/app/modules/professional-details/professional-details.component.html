@@ -1,5 +1,18 @@
-<div class="container">
-  <app-professional-profile class="profile" [professional]="professional"></app-professional-profile>
-  <app-scheduling *ngIf="professional" class="schedule hidden-mobile" [professionalId]="professional.id" (scheduleEvent)="schedule($event)" [limit]="4"></app-scheduling>
-  <app-scheduling *ngIf="professional" class="schedule hidden-desktop" [professionalId]="professional.id" (scheduleEvent)="schedule($event)" [limit]="1"></app-scheduling>
+<div *ngIf="professional" class="container">
+  <app-professional-profile
+    class="profile"
+    [professional]="professional"
+  ></app-professional-profile>
+  <app-scheduling
+    class="schedule hidden-mobile"
+    [limit]="4"
+    [professionalId]="professional.id"
+    (scheduleEvent)="schedule($event)"
+  ></app-scheduling>
+  <app-scheduling
+    class="schedule hidden-desktop" 
+    [limit]="1"
+    [professionalId]="professional.id"
+    (scheduleEvent)="schedule($event)"
+  ></app-scheduling>
 </div>
