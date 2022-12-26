@@ -19,4 +19,28 @@ describe('RatingStarsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('getRatingStars', () => {
+    const testCases = [
+      { input: 0, expected: [false, false, false, false, false] },
+      { input: 1, expected: [true, false, false, false, false] },
+      { input: 2, expected: [true, true, false, false, false] },
+      { input: 3, expected: [true, true, true, false, false] },
+      { input: 4, expected: [true, true, true, true, false] },
+      { input: 5, expected: [true, true, true, true, true] },
+    ];
+
+    it('should return [true, true, true, true, true]', () => {
+      expect(component).toBeTruthy();
+    });
+
+    testCases.forEach((test, index) => {
+      it(`should return ${test.expected} when input is ${
+        test.input
+      } (testcase: ${index + 1})`, () => {
+        const result = component.getRatingStars(test.input);
+        expect(result).toEqual(test.expected);
+      });
+    });
+  });
 });
