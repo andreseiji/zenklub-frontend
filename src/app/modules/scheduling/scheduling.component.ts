@@ -31,7 +31,7 @@ export class SchedulingComponent implements OnChanges, OnDestroy {
 
   protected scheduleSubscription!: Subscription;
   protected isLoading = false;
-  protected start = 0;
+  start = 0;
   currentDays: Date[] = [];
   currentSlots: SlotDay[] = [];
 

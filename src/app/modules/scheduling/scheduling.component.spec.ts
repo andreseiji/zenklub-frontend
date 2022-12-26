@@ -36,4 +36,28 @@ describe('SchedulingComponent', () => {
       expect(result).toEqual([date, addDays(date, 1)]);
     });
   });
+
+  describe('getNextDays', () => {
+    it('should return update start', () => {
+      component.start = 0;
+      component.limit = 1;
+      component.getNextDays();
+      expect(component.start).toBe(1);
+    });
+  });
+
+  describe('getPreviousDays', () => {
+    it('should not update start if value would be less than 0', () => {
+      component.start = 0;
+      component.limit = 1;
+      component.getPreviousDays();
+      expect(component.start).toBe(0);
+    });
+    it('should update start if value would be 0 or more', () => {
+      component.start = 2;
+      component.limit = 1;
+      component.getPreviousDays();
+      expect(component.start).toBe(1);
+    });
+  });
 });
