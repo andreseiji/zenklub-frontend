@@ -16,6 +16,7 @@ describe('SchedulingComponent', () => {
 
     fixture = TestBed.createComponent(SchedulingComponent);
     component = fixture.componentInstance;
+    spyOn(component.scheduleEvent, 'emit');
     fixture.detectChanges();
   });
 
@@ -58,6 +59,16 @@ describe('SchedulingComponent', () => {
       component.limit = 1;
       component.getPreviousDays();
       expect(component.start).toBe(1);
+    });
+  });
+
+  describe('handleScheduleClick', () => {
+    it('should emit event on call', () => {
+      component.handleScheduleClick({ startTime: 'a', endTime: 'b' });
+      expect(component.scheduleEvent.emit).toHaveBeenCalledWith({
+        startTime: 'a',
+        endTime: 'b',
+      });
     });
   });
 });

@@ -27,7 +27,7 @@ export class SchedulingComponent implements OnChanges, OnDestroy {
   @Input() professionalId!: string;
   @Input() limit = 1;
 
-  @Output() private scheduleEvent = new EventEmitter<ScheduleSlot>();
+  @Output() scheduleEvent = new EventEmitter<ScheduleSlot>();
 
   protected scheduleSubscription!: Subscription;
   protected isLoading = false;
