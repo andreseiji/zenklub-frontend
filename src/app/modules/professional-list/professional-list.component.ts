@@ -11,7 +11,6 @@ import { ProfessionalService } from '../../services/professional-service.service
 export class ProfessionalListComponent implements OnInit, OnDestroy {
   protected professionalsSubscription!: Subscription;
   protected professionals: Professional[] = [];
-
   protected isLoading = false;
 
   constructor(private professionalService: ProfessionalService) {}

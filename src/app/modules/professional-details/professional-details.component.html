@@ -10,3 +10,6 @@
     (scheduleEvent)="schedule($event)"
   ></app-scheduling>
 </div>
+<div *ngIf="isLoading" class="container">
+  <p class="loading-state">Carregando...</p>
+</div>

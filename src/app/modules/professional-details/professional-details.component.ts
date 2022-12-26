@@ -14,6 +14,7 @@ import { ProfessionalService } from '../../services/professional-service.service
 export class ProfessionalDetailsComponent implements OnInit, OnDestroy {
   protected routeSubscription!: Subscription;
   protected professionalSubscription!: Subscription;
+  protected isLoading = false;
   protected professional: Professional = null;
   protected professionalSchedule: Schedule = [];
   protected limit = 1;
@@ -41,6 +42,7 @@ export class ProfessionalDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.isLoading = true;
     this.routeSubscription = this.route.paramMap.subscribe(
       (params: ParamMap) => {
         const id = params.get('id') ?? '';
@@ -48,6 +50,7 @@ export class ProfessionalDetailsComponent implements OnInit, OnDestroy {
           .getProfessional(id)
           .subscribe((data) => {
             this.professional = data;
+            this.isLoading = false;
           });
       }
     );

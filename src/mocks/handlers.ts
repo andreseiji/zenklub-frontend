@@ -29,7 +29,7 @@ export const handlers = [
       return res(ctx.status(200), ctx.json(details2));
     }
     if (id === '3') {
-      return res(ctx.status(200), ctx.delay(10000), ctx.json(details3));
+      return res(ctx.status(200), ctx.delay(400), ctx.json(details3));
     }
 
     return res(ctx.status(404));
