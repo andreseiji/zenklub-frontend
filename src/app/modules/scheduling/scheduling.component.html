@@ -5,21 +5,37 @@
       <p class="timezone">Fuso horário: {{getTimezone()}}</p>
     </div>
     <div class="date-range">
-      <button class="date-action" aria-label="4 dias anteriores" (click)="getPreviousDays()" [disabled]="dateOffset === 0">
+      <button
+        class="date-action"
+        attr.aria-label="{{limit}} dias anteriores"
+        (click)="getPreviousDays()"
+        [disabled]="start - limit < 0"
+      >
         <img src="/assets/icons/arrow-left.svg" alt="" />
       </button>
       <div *ngFor="let day of currentDays" class="date-day">
         <p class="date-weekday">{{ day | date: 'EE' }}</p>
         <p class="date-month-and-day">{{ day | date: 'MMM dd' }}</p>
       </div>
-      <button class="date-action" aria-label="Próximos 4 dias" (click)="getNextDays()">
+      <button
+        class="date-action"
+        attr.aria-label="Próximos {{limit}} dias"
+        (click)="getNextDays()"
+      >
         <img src="/assets/icons/arrow-right.svg" alt="" />
       </button>
     </div>
   </div>
   <div class="date-slots">
     <div *ngFor="let date of currentSlots" class="date-slots-list">
-      <button *ngFor="let slot of date.slots" class="slot" (click)="handleScheduleClick(slot)">{{ slot.startTime | date: 'HH:mm' }}</button>
+      <button
+        *ngFor="let slot of date.slots"
+        class="slot"
+        (click)="handleScheduleClick(slot)"
+        attr.aria-label="{{slot.startTime | date: 'dd/MMM, HH:mm'}}"
+      >
+        {{ slot.startTime | date: 'HH:mm' }}
+      </button>
     </div>
   </div>
 </div>

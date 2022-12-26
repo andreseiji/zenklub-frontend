@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { format, getDay } from 'date-fns';
+import { format } from 'date-fns';
 import { Professional } from 'src/app/models/professional';
 import { Schedule, ScheduleSlot } from 'src/app/models/schedule';
 import { ProfessionalService } from '../../services/professional-service.service';
@@ -13,12 +13,28 @@ import { ProfessionalService } from '../../services/professional-service.service
 export class ProfessionalDetailsComponent implements OnInit {
   protected professional: Professional = null;
   protected professionalSchedule: Schedule = [];
+  protected limit = 1;
 
   constructor(
     private route: ActivatedRoute,
     private professionalService: ProfessionalService
   ) {
-    professionalService;
+    this.onResize();
+  }
+
+  setLimitBasedOnWidth(width: number) {
+    if (width < 600) {
+      this.limit = 1;
+    } else if (width < 960) {
+      this.limit = 3;
+    } else {
+      this.limit = 4;
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.setLimitBasedOnWidth(window.innerWidth);
   }
 
   ngOnInit() {
