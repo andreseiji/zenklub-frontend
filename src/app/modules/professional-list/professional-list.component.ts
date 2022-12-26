@@ -14,7 +14,7 @@ export class ProfessionalListComponent implements OnInit {
 
   ngOnInit() {
     this.professionalService.getProfessionals().subscribe((data) => {
-      this.professionals = [...(data as Professional[])];
+      this.professionals = [...data];
     });
   }
 }

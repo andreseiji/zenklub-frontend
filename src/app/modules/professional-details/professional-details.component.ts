@@ -41,7 +41,7 @@ export class ProfessionalDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = params.get('id') ?? '';
       this.professionalService.getProfessional(id).subscribe((data) => {
-        this.professional = data as Professional;
+        this.professional = data;
       });
     });
   }
