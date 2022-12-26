@@ -12,13 +12,17 @@ export class ProfessionalListComponent implements OnInit, OnDestroy {
   protected professionalsSubscription!: Subscription;
   protected professionals: Professional[] = [];
 
+  protected isLoading = false;
+
   constructor(private professionalService: ProfessionalService) {}
 
   ngOnInit() {
+    this.isLoading = true;
     this.professionalsSubscription = this.professionalService
       .getProfessionals()
       .subscribe((data) => {
         this.professionals = [...data];
+        this.isLoading = false;
       });
   }
 

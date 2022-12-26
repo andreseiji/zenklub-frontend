@@ -7,6 +7,7 @@
           <app-professional-profile [professional]="professional" [compact]="true" style="width: 100%"></app-professional-profile>
         </a>
       </li>
+      <li *ngIf="isLoading" class="loading-state">Carregando...</li>
     </ul>
   </div>
 </section>
