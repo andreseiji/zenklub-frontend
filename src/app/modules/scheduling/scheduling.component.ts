@@ -55,7 +55,7 @@ export class SchedulingComponent implements OnInit {
         endDate.toISOString()
       )
       .subscribe((data) => {
-        this.updateCurrentSlots(data as Schedule);
+        this.updateCurrentSlots(data);
       });
   }
 
