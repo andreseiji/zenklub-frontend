@@ -29,6 +29,17 @@ export class SchedulingComponent implements OnInit {
     professionalService;
   }
 
+  updateCurrentSlots(slots: Schedule): void {
+    const updatedSlots: SlotDay[] = [];
+    this.currentDays.forEach((day) => {
+      updatedSlots.push({
+        day,
+        slots: slots.filter((slot) => isSameDay(day, new Date(slot.startTime))),
+      });
+    });
+    this.currentSlots = [...updatedSlots];
+  }
+
   fetchCurrentSlots(
     professionalId: string,
     start: number,
@@ -36,6 +47,7 @@ export class SchedulingComponent implements OnInit {
   ): void {
     const startDate = addDays(new Date(), start);
     const endDate = addDays(new Date(), start + limit);
+
     this.professionalService
       .getProfessionalSchedule(
         professionalId,
@@ -43,16 +55,7 @@ export class SchedulingComponent implements OnInit {
         endDate.toISOString()
       )
       .subscribe((data) => {
-        const updatedSlots: SlotDay[] = [];
-        this.currentDays.forEach((day) => {
-          updatedSlots.push({
-            day,
-            slots: (data as Schedule).filter((slot) =>
-              isSameDay(day, new Date(slot.startTime))
-            ),
-          });
-        });
-        this.currentSlots = [...updatedSlots];
+        this.updateCurrentSlots(data as Schedule);
       });
   }
 
