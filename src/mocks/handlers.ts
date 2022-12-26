@@ -22,9 +22,15 @@ export const handlers = [
   rest.get(`${BASE_API_URL}/professionals/:id`, (req, res, ctx) => {
     const { id } = req.params;
 
-    if (id === '1') return res(ctx.status(200), ctx.json(details1));
-    if (id === '2') return res(ctx.status(200), ctx.json(details2));
-    if (id === '3') return res(ctx.status(200), ctx.json(details3));
+    if (id === '1') {
+      return res(ctx.status(200), ctx.json(details1));
+    }
+    if (id === '2') {
+      return res(ctx.status(200), ctx.json(details2));
+    }
+    if (id === '3') {
+      return res(ctx.status(200), ctx.delay(400), ctx.json(details3));
+    }
 
     return res(ctx.status(404));
   }),
@@ -66,7 +72,7 @@ export const handlers = [
         });
       });
 
-      return res(ctx.status(200), ctx.json(slots));
+      return res(ctx.status(200), ctx.delay(200), ctx.json(slots));
     }
 
     return res(ctx.status(404));

@@ -1,4 +1,5 @@
 @import "src/styles/breakpoint";
+@import "src/styles/colors";
 @import "src/styles/spacing";
 
 .container {
@@ -26,4 +27,10 @@
 
 .schedule {
   flex: 2;
+}
+
+.loading-state {
+  color: $gray500;
+  text-align: center;
+  width: 100%;
 }

@@ -26,7 +26,7 @@
       </button>
     </div>
   </div>
-  <div class="date-slots">
+  <div *ngIf="!isLoading" class="date-slots">
     <div *ngFor="let date of currentSlots" class="date-slots-list">
       <button
         *ngFor="let slot of date.slots"
@@ -37,5 +37,8 @@
         {{ slot.startTime | date: 'HH:mm' }}
       </button>
     </div>
+  </div>
+  <div *ngIf="isLoading" class="date-slots">
+    <p class="loading-state">Carregando...</p>
   </div>
 </div>

@@ -93,7 +93,7 @@
   display: flex;
   padding: $spacing-md 56px;
   gap: $spacing-md;
-  max-height: 400px;
+  height: 400px;
   overflow-y: auto;
 }
 
@@ -117,4 +117,11 @@
   &:hover {
     background-color: $gray300;
   }
+}
+
+.loading-state {
+  align-self: center;
+  color: $gray500;
+  text-align: center;
+  width: 100%;
 }

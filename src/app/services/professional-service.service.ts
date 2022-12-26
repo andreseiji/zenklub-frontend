@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { BASE_API_URL } from 'src/config/api';
 import { Observable } from 'rxjs';
 import { Schedule } from '../models/schedule';
+import { Professional } from '../models/professional';
 
 @Injectable({
   providedIn: 'root',
@@ -10,12 +11,12 @@ import { Schedule } from '../models/schedule';
 export class ProfessionalService {
   constructor(private http: HttpClient) {}
 
-  getProfessionals() {
-    return this.http.get(`${BASE_API_URL}/professionals`);
+  getProfessionals(): Observable<Professional[]> {
+    return this.http.get<Professional[]>(`${BASE_API_URL}/professionals`);
   }
 
-  getProfessional(id: string) {
-    return this.http.get(`${BASE_API_URL}/professionals/${id}`);
+  getProfessional(id: string): Observable<Professional> {
+    return this.http.get<Professional>(`${BASE_API_URL}/professionals/${id}`);
   }
 
   getProfessionalSchedule(

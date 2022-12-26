@@ -3,10 +3,12 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   Output,
 } from '@angular/core';
 import { isSameDay } from 'date-fns';
 import addDays from 'date-fns/addDays';
+import { Subscription } from 'rxjs';
 import { Schedule, ScheduleSlot } from 'src/app/models/schedule';
 import { ProfessionalService } from 'src/app/services/professional-service.service';
 import { getTimezoneLocation, getTimezoneOffset } from 'src/app/utils/timezone';
@@ -21,21 +23,29 @@ type SlotDay = {
   templateUrl: './scheduling.component.html',
   styleUrls: ['./scheduling.component.scss'],
 })
-export class SchedulingComponent implements OnChanges {
+export class SchedulingComponent implements OnChanges, OnDestroy {
   @Input() professionalId!: string;
   @Input() limit = 1;
 
-  @Output() scheduleEvent = new EventEmitter<ScheduleSlot>();
+  @Output() private scheduleEvent = new EventEmitter<ScheduleSlot>();
 
-  public start = 0;
-  public currentDays: Date[] = [];
-  public currentSlots: SlotDay[] = [];
+  protected scheduleSubscription!: Subscription;
+  protected isLoading = false;
+  protected start = 0;
+  protected currentDays: Date[] = [];
+  protected currentSlots: SlotDay[] = [];
 
   constructor(private professionalService: ProfessionalService) {}
 
   ngOnChanges() {
     this.currentDays = this.getCurrentDays(this.start, this.limit);
     this.fetchCurrentSlots(this.professionalId, this.start, this.limit);
+  }
+
+  ngOnDestroy(): void {
+    if (this.scheduleSubscription) {
+      this.scheduleSubscription.unsubscribe();
+    }
   }
 
   updateCurrentSlots(slots: Schedule): void {
@@ -54,10 +64,11 @@ export class SchedulingComponent implements OnChanges {
     start: number,
     limit: number
   ): void {
+    this.isLoading = true;
     const startDate = addDays(new Date(), start);
     const endDate = addDays(new Date(), start + limit);
 
-    this.professionalService
+    this.scheduleSubscription = this.professionalService
       .getProfessionalSchedule(
         professionalId,
         startDate.toISOString(),
@@ -65,6 +76,7 @@ export class SchedulingComponent implements OnChanges {
       )
       .subscribe((data) => {
         this.updateCurrentSlots(data);
+        this.isLoading = false;
       });
   }
 
