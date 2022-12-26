@@ -30,6 +30,7 @@ export class SchedulingComponent implements OnChanges, OnDestroy {
   @Output() private scheduleEvent = new EventEmitter<ScheduleSlot>();
 
   protected scheduleSubscription!: Subscription;
+  protected isLoading = false;
   protected start = 0;
   protected currentDays: Date[] = [];
   protected currentSlots: SlotDay[] = [];
@@ -63,6 +64,7 @@ export class SchedulingComponent implements OnChanges, OnDestroy {
     start: number,
     limit: number
   ): void {
+    this.isLoading = true;
     const startDate = addDays(new Date(), start);
     const endDate = addDays(new Date(), start + limit);
 
@@ -74,6 +76,7 @@ export class SchedulingComponent implements OnChanges, OnDestroy {
       )
       .subscribe((data) => {
         this.updateCurrentSlots(data);
+        this.isLoading = false;
       });
   }
 
