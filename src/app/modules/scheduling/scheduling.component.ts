@@ -16,7 +16,7 @@ type SlotDay = {
   styleUrls: ['./scheduling.component.scss'],
 })
 export class SchedulingComponent implements OnInit {
-  @Input() id: string | undefined;
+  @Input() professionalId!: string;
   @Input() limit = 1;
 
   @Output() scheduleEvent = new EventEmitter<ScheduleSlot>();
@@ -29,26 +29,16 @@ export class SchedulingComponent implements OnInit {
     professionalService;
   }
 
-  getCurrentDays(start: number, limit: number): Date[] {
-    const firstDay = addDays(new Date(), start);
-    const currentDays = [];
-    let iterator = 0;
-
-    while (iterator < limit) {
-      const currentDay = addDays(firstDay, iterator);
-      currentDays.push(currentDay);
-      iterator++;
-    }
-
-    return currentDays;
-  }
-
-  fetchCurrentSlots(id: string, start: number, limit: number): void {
+  fetchCurrentSlots(
+    professionalId: string,
+    start: number,
+    limit: number
+  ): void {
     const startDate = addDays(new Date(), start);
     const endDate = addDays(new Date(), start + limit);
     this.professionalService
       .getProfessionalSchedule(
-        id,
+        professionalId,
         startDate.toISOString(),
         endDate.toISOString()
       )
@@ -68,17 +58,27 @@ export class SchedulingComponent implements OnInit {
 
   ngOnInit() {
     this.currentDays = this.getCurrentDays(this.start, this.limit);
-    if (this.id) {
-      this.fetchCurrentSlots(this.id, this.start, this.limit);
+    this.fetchCurrentSlots(this.professionalId, this.start, this.limit);
+  }
+
+  getCurrentDays(start: number, limit: number): Date[] {
+    const firstDay = addDays(new Date(), start);
+    const currentDays = [];
+    let iterator = 0;
+
+    while (iterator < limit) {
+      const currentDay = addDays(firstDay, iterator);
+      currentDays.push(currentDay);
+      iterator++;
     }
+
+    return currentDays;
   }
 
   getNextDays(): void {
     this.start = this.start + this.limit;
     this.currentDays = this.getCurrentDays(this.start, this.limit);
-    if (this.id) {
-      this.fetchCurrentSlots(this.id, this.start, this.limit);
-    }
+    this.fetchCurrentSlots(this.professionalId, this.start, this.limit);
   }
 
   getPreviousDays(): void {
@@ -86,9 +86,7 @@ export class SchedulingComponent implements OnInit {
       this.start = this.start - this.limit;
     }
     this.currentDays = this.getCurrentDays(this.start, this.limit);
-    if (this.id) {
-      this.fetchCurrentSlots(this.id, this.start, this.limit);
-    }
+    this.fetchCurrentSlots(this.professionalId, this.start, this.limit);
   }
 
   getTimezone(): string {
