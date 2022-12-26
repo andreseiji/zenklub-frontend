@@ -80,8 +80,8 @@ export class SchedulingComponent implements OnChanges, OnDestroy {
       });
   }
 
-  getCurrentDays(start: number, limit: number): Date[] {
-    const firstDay = addDays(new Date(), start);
+  getCurrentDays(start: number, limit: number, now = new Date()): Date[] {
+    const firstDay = addDays(now, start);
     const currentDays = [];
     let iterator = 0;
 
